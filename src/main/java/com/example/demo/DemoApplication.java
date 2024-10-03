@@ -22,6 +22,12 @@ public class DemoApplication {
         headers.forEach((key, value) -> {
             LOG.info(String.format("Header '%s' = %s", key, value));
         });
+        // add sleep time before response
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return "Hello World!";
     }
 
