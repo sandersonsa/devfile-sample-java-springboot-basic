@@ -19,7 +19,7 @@ public class DemoApplication {
 
     @RequestMapping("/")
     String home(@RequestHeader Map<String, String> headers) {
-        LOG.info("\n-- -- -- -- -- -- -- -- --- -- -- -- -- -- -- -- -- --- ");
+        LOG.info("\n\n-- -- -- -- -- -- -- -- --- -- -- -- -- -- -- -- -- --- ");
         headers.forEach((key, value) -> {
             LOG.info(String.format("#Header '%s' = %s", key, value));
         });        
