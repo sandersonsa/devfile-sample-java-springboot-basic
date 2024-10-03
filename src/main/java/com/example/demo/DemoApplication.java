@@ -17,7 +17,7 @@ public class DemoApplication {
 
     private static final Log LOG = LogFactory.getLog(DemoApplication.class);
 
-    @RequestMapping("/")
+    @RequestMapping("/demo")
     String home(@RequestHeader Map<String, String> headers) {
         LOG.info("\n\n-- -- -- -- -- -- -- -- --- -- -- -- -- -- -- -- -- --- ");
         headers.forEach((key, value) -> {
