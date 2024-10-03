@@ -19,9 +19,10 @@ public class DemoApplication {
 
     @RequestMapping("/")
     String home(@RequestHeader Map<String, String> headers) {
+        LOG.info("\n-- -- -- -- -- -- -- -- --- -- -- -- -- -- -- -- -- --- ");
         headers.forEach((key, value) -> {
-            LOG.info(String.format("Header '%s' = %s", key, value));
-        });
+            LOG.info(String.format("#Header '%s' = %s", key, value));
+        });        
         // add sleep time before response
         try {
             Thread.sleep(10000);
