@@ -36,10 +36,14 @@ public class DemoApplication {
     }
 
     @PostMapping(path = "/introspect", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    public void test(@RequestParam Map<String, String> params) {
+    public void test(@RequestParam Map<String, String> params,
+                     @RequestHeader Map<String, String> headers) {
         for (Map.Entry<?, ?> entry : params.entrySet()) {
             System.out.printf("%-15s : %s%n", entry.getKey(), entry.getValue());
-       }
+        }
+         headers.forEach((key, value) -> {
+            LOG.info(String.format("#Header '%s' = %s", key, value));
+        });
     }
 
     public static void main(String[] args) {
