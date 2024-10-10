@@ -6,7 +6,10 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,7 +39,7 @@ public class DemoApplication {
     }
 
     @PostMapping(path = "/introspect", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    public void test(@RequestParam Map<String, String> params,
+    public ResponseEntity<?> introspect(@RequestParam Map<String, String> params,
                      @RequestHeader Map<String, String> headers) {
         for (Map.Entry<?, ?> entry : params.entrySet()) {
             System.out.printf("%-15s : %s%n", entry.getKey(), entry.getValue());
@@ -44,6 +47,7 @@ public class DemoApplication {
          headers.forEach((key, value) -> {
             LOG.info(String.format("#Header '%s' = %s", key, value));
         });
+        return new ResponseEntity<>("POST SUCESSO!", HttpStatus.CREATED);
     }
 
     public static void main(String[] args) {
